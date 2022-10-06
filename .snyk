@@ -1,0 +1,204 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - express-status-monitor > debug:
+        patched: '2022-10-05T20:56:37.002Z'
+    - express > finalhandler > debug:
+        patched: '2022-10-05T20:56:37.002Z'
+    - express-status-monitor > socket.io > debug:
+        patched: '2022-10-05T20:56:37.002Z'
+    - github > follow-redirects > debug:
+        patched: '2022-10-05T20:56:37.002Z'
+    - github > https-proxy-agent > debug:
+        patched: '2022-10-05T20:56:37.002Z'
+    - express-status-monitor > socket.io > engine.io > debug:
+        patched: '2022-10-05T20:56:37.002Z'
+    - express-status-monitor > socket.io > socket.io-parser > debug:
+        patched: '2022-10-05T20:56:37.002Z'
+    - express-status-monitor > socket.io > socket.io-client > debug:
+        patched: '2022-10-05T20:56:37.002Z'
+    - express-status-monitor > socket.io > socket.io-client > engine.io-client > debug:
+        patched: '2022-10-05T20:56:37.002Z'
+    - express-status-monitor > socket.io > socket.io-client > socket.io-parser > debug:
+        patched: '2022-10-05T20:56:37.002Z'
+  'npm:extend:20180424':
+    - request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - clockwork > request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - fbgraph > request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - lob > request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-linkedin > request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - tumblr.js > request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twilio > request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twit > request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - github > https-proxy-agent > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - passport-openid > openid > request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - github > https-proxy-agent > agent-base > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > node-gyp > request > extend:
+        patched: '2022-10-05T20:56:37.002Z'
+  'npm:hoek:20180212':
+    - clockwork > request > hawk > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - fbgraph > request > hawk > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - lob > request > hawk > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-linkedin > request > hawk > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - tumblr.js > request > hawk > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twit > request > hawk > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twilio > jsonwebtoken > joi > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - clockwork > request > hawk > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - fbgraph > request > hawk > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - lob > request > hawk > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-linkedin > request > hawk > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - tumblr.js > request > hawk > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twit > request > hawk > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - clockwork > request > hawk > sntp > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - fbgraph > request > hawk > sntp > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - lob > request > hawk > sntp > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-linkedin > request > hawk > sntp > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - tumblr.js > request > hawk > sntp > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twit > request > hawk > sntp > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > request > hawk > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - passport-openid > openid > request > hawk > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twilio > jsonwebtoken > joi > topo > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - clockwork > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - fbgraph > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - lob > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-linkedin > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - tumblr.js > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twit > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > request > hawk > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - passport-openid > openid > request > hawk > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > request > hawk > sntp > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - passport-openid > openid > request > hawk > sntp > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - passport-openid > openid > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > sntp > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2022-10-05T20:56:37.002Z'
+  SNYK-JS-LODASH-567746:
+    - cheerio > lodash:
+        patched: '2022-10-05T20:56:37.002Z'
+    - express-validator > lodash:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-linkedin > lodash:
+        patched: '2022-10-05T20:56:37.002Z'
+    - tumblr.js > lodash:
+        patched: '2022-10-05T20:56:37.002Z'
+    - mongoose > async > lodash:
+        patched: '2022-10-05T20:56:37.002Z'
+    - clockwork > xml2js > xmlbuilder > lodash:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > sass-graph > lodash:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > gaze > globule > lodash:
+        patched: '2022-10-05T20:56:37.002Z'
+  'npm:mime:20170907':
+    - github > mime:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twit > mime:
+        patched: '2022-10-05T20:56:37.002Z'
+  'npm:moment:20170905':
+    - twilio > jsonwebtoken > joi > moment:
+        patched: '2022-10-05T20:56:37.002Z'
+  'npm:request:20160119':
+    - node-foursquare > winston > request:
+        patched: '2022-10-05T20:56:37.002Z'
+  'npm:stringstream:20180511':
+    - request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+    - clockwork > request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+    - fbgraph > request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+    - lob > request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-linkedin > request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+    - tumblr.js > request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twilio > request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twit > request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+    - passport-openid > openid > request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > node-gyp > request > stringstream:
+        patched: '2022-10-05T20:56:37.002Z'
+  'npm:tough-cookie:20170905':
+    - request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
+    - clockwork > request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
+    - fbgraph > request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
+    - lob > request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-linkedin > request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
+    - tumblr.js > request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twilio > request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
+    - twit > request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
+    - passport-openid > openid > request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
+    - node-sass-middleware > node-sass > node-gyp > request > tough-cookie:
+        patched: '2022-10-05T20:56:37.002Z'
