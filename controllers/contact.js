@@ -24,7 +24,8 @@ exports.getContact = (req, res) => {
  */
 exports.postContact = (req, res) => {
   req.assert('name', 'Name cannot be blank').notEmpty();
-  req.assert('email', 'Email is not valid').isEmail();
+  req.isTrimmed('email').withMessage('Email must not contain leading or trailing whitespace').notEmpty();
+  req.sanitize('email').isEmail().withMessage('Email is not valid');
   req.assert('message', 'Message cannot be blank').notEmpty();
 
   const errors = req.validationErrors();
@@ -35,15 +36,16 @@ exports.postContact = (req, res) => {
   }
 
   const mailOptions = {
-    to: 'your@email.com',
-    from: `${req.body.name} <${req.body.email}>`,
+    to: process.env.CONTACT_EMAIL || 'your@email.com',
+    from: `${req.body.name} <${req.body.email.trim().toLowerCase()}>`,
     subject: 'Contact Form | Hackathon Starter',
-    text: req.body.message
+    text: req.body.message.trim()
   };
 
   transporter.sendMail(mailOptions, (err) => {
     if (err) {
-      req.flash('errors', { msg: err.message });
+      const errorMessage = err.message || 'Failed to send email. Please try again later.';
+      req.flash('errors', { msg: errorMessage });
       return res.redirect('/contact');
     }
     req.flash('success', { msg: 'Email has been sent successfully!' });
