@@ -1,4 +1,5 @@
 const request = require('supertest');
+const { expect } = require('chai');
 const app = require('../app.js');
 
 describe('GET /', () => {
@@ -46,5 +47,20 @@ describe('GET /random-url', () => {
     request(app)
       .get('/reset')
       .expect(404, done);
+  });
+});
+
+describe('GET /api/health', () => {
+  it('should return 200 OK with health status', (done) => {
+    request(app)
+      .get('/api/health')
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body).to.have.property('status', 'ok');
+        expect(res.body).to.have.property('timestamp');
+        expect(res.body).to.have.property('uptime');
+        done();
+      });
   });
 });
