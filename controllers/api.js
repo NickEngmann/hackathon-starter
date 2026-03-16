@@ -624,3 +624,18 @@ exports.getGoogleMaps = (req, res) => {
     title: 'Google Maps API'
   });
 };
+
+/**
+ * GET /api/health
+ * Health check endpoint for monitoring system status.
+ */
+exports.getHealth = (req, res) => {
+  res.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    memory: process.memoryUsage(),
+    platform: process.platform,
+    nodeVersion: process.version
+  });
+};

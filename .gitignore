@@ -30,3 +30,20 @@ bower_components
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Auto-added by Marisol pipeline
+.cache/
+build/
+dist/
+
+# Auto-added by Marisol pipeline
+__pycache__/
+*.pyc
+.pytest_cache/
+debug_*.py
+*.egg-info/
+*.so
+.pio/
+.gradle/
+*.class
+local.properties

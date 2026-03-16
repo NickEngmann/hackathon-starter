@@ -17,10 +17,15 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
-const sass = require('node-sass-middleware');
 const multer = require('multer');
 
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
+
+// Conditionally load node-sass middleware (skip in test environment)
+let sass;
+if (process.env.NODE_ENV !== 'test') {
+  sass = require('node-sass-middleware');
+}
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -49,12 +54,18 @@ const app = express();
  * Connect to MongoDB.
  */
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
-mongoose.connection.on('error', (err) => {
-  console.error(err);
-  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
-  process.exit();
-});
+
+// Skip MongoDB connection in test mode
+if (process.env.NODE_ENV !== 'test') {
+  mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
+  mongoose.connection.on('error', (err) => {
+    console.error(err);
+    console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
+    process.exit();
+  });
+} else {
+  console.log('✓ App is running in test mode (no MongoDB connection)');
+}
 
 /**
  * Express configuration.
@@ -65,24 +76,42 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(expressStatusMonitor());
 app.use(compression());
-app.use(sass({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public')
-}));
+
+// Conditionally load node-sass middleware (skip in test environment)
+if (process.env.NODE_ENV !== 'test') {
+  app.use(sass({
+    src: path.join(__dirname, 'public'),
+    dest: path.join(__dirname, 'public')
+  }));
+}
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-app.use(session({
-  resave: true,
-  saveUninitialized: true,
-  secret: process.env.SESSION_SECRET,
-  store: new MongoStore({
-    url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
-    autoReconnect: true,
-    clear_interval: 3600
-  })
-}));
+
+// Skip MongoStore in test mode, use memory store instead
+if (process.env.NODE_ENV === 'test') {
+  const MemoryStore = require('memorystore')(session);
+  app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: process.env.SESSION_SECRET,
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    })
+  }));
+} else {
+  app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: process.env.SESSION_SECRET,
+    store: new MongoStore({
+      url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
+      autoReconnect: true,
+      clear_interval: 3600
+    })
+  }));
+}
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -168,6 +197,7 @@ app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 app.get('/api/pinterest', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getPinterest);
 app.post('/api/pinterest', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.postPinterest);
 app.get('/api/google-maps', apiController.getGoogleMaps);
+app.get('/api/health', apiController.getHealth);
 
 /**
  * OAuth authentication routes. (Sign in)
